@@ -1,6 +1,6 @@
-def solve_part1():
-    pass
+def solve_part1(data: str) -> str:
+    return ""
 
 
-def solve_part2():
-    pass
+def solve_part2(data: str) -> str:
+    return ""
