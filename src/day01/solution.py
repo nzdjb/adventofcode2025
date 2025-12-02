@@ -26,7 +26,9 @@ def solve_part2(data: str) -> str:
 
         op = sub if m["direction"] == "L" else add
         quan = int(m["quantity"])
-        zeroes += abs(floor(op(dial, quan) / 100))
+        zeroes += floor(abs(op(dial, quan) / 100))
+        if dial > 0 and op(dial, quan) <= 0:
+            zeroes += 1
         dial = op(dial, quan) % 100
 
     return str(zeroes)
