@@ -1,11 +1,11 @@
-from pytest import fixture, mark
+from pytest import mark
 
 from ..solution import solve_part1, solve_part2
 
 
-@fixture
-def part1_sample():
-    data = """L68
+part1_samples = [
+    (
+        """L68
 L30
 R48
 L5
@@ -14,13 +14,14 @@ L55
 L1
 L99
 R14
-L82"""
-    expected = "3"
-    return [data, expected]
+L82""",
+        "3",
+    )
+]
 
 
-def test_solve_part1(part1_sample: list[str]):
-    (data, expected) = part1_sample
+@mark.parametrize("data,expected", part1_samples)
+def test_solve_part1(data: str, expected: str):
     assert solve_part1(data) == expected
 
 
