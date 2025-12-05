@@ -2,7 +2,16 @@ from pytest import mark
 
 from ..solution import solve_part1, solve_part2
 
-part1_samples = []
+part1_samples = [("""..@@.@@@@.
+@@@.@.@.@@
+@@@@@.@.@@
+@.@@@@..@.
+@@.@@@@.@@
+.@@@@@@@.@
+.@.@.@.@@@
+@.@@@.@@@@
+.@@@@@@@@.
+@.@.@@@.@.""", "13")]
 
 
 @mark.parametrize("data,expected", part1_samples)
@@ -10,7 +19,16 @@ def test_solve_part1(data: str, expected: str):
     assert solve_part1(data) == expected
 
 
-part2_samples = []
+part2_samples = [("""..@@.@@@@.
+@@@.@.@.@@
+@@@@@.@.@@
+@.@@@@..@.
+@@.@@@@.@@
+.@@@@@@@.@
+.@.@.@.@@@
+@.@@@.@@@@
+.@@@@@@@@.
+@.@.@@@.@.""", "43")]
 
 
 @mark.parametrize("data,expected", part2_samples)
