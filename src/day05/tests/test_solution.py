@@ -58,7 +58,10 @@ def test_solve_part1(data: str, expected: str):
     assert solve_part1(data) == expected
 
 
-part2_samples = []
+part2_samples = [
+    ("1-3\n5-7\n\n0", "6"),
+    ("1-3\n2-5\n\n0", "5"),
+]
 
 
 @mark.parametrize("data,expected", part2_samples)

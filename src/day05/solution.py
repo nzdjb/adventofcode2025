@@ -18,4 +18,27 @@ def solve_part1(data: str) -> str:
 
 
 def solve_part2(data: str) -> str:
-    return ""
+    lines = data.splitlines()
+    split = lines.index("")
+    fresh = lines[:split]
+
+    ranges = [range(*x) for x in ((int(v) + i for i,
+                                   v in enumerate(f.split("-"))) for f in fresh)]
+
+    ranges.sort(key=lambda r: r.start)
+
+    final_ranges = []
+    while len(ranges) > 1:
+        [first, second, *rest] = ranges
+        if first.stop >= second.start:
+            ranges = [range(first.start, max(
+                [first.stop, second.stop])), *rest]
+        else:
+            final_ranges.append(first)
+            ranges = [second, *rest]
+
+    final_ranges.append(ranges[0])
+
+    total = sum([len(r) for r in final_ranges])
+
+    return str(total)
