@@ -2,7 +2,7 @@ def solve_part1(data: str) -> str:
     lines = data.splitlines()
     split = lines.index("")
     fresh = lines[:split]
-    ingredients = map(lambda x: int(x), lines[split+1:])
+    ingredients = map(lambda x: int(x), lines[split + 1 :])
     fresh_lists = []
     for fresh_line in fresh:
         fresh_lists.append([int(x) for x in fresh_line.split("-")])
@@ -22,8 +22,10 @@ def solve_part2(data: str) -> str:
     split = lines.index("")
     fresh = lines[:split]
 
-    ranges = [range(*x) for x in ((int(v) + i for i,
-                                   v in enumerate(f.split("-"))) for f in fresh)]
+    ranges = [
+        range(*x)
+        for x in ((int(v) + i for i, v in enumerate(f.split("-"))) for f in fresh)
+    ]
 
     ranges.sort(key=lambda r: r.start)
 
@@ -31,8 +33,7 @@ def solve_part2(data: str) -> str:
     while len(ranges) > 1:
         [first, second, *rest] = ranges
         if first.stop >= second.start:
-            ranges = [range(first.start, max(
-                [first.stop, second.stop])), *rest]
+            ranges = [range(first.start, max([first.stop, second.stop])), *rest]
         else:
             final_ranges.append(first)
             ranges = [second, *rest]

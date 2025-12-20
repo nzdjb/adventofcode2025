@@ -18,11 +18,13 @@ def complete_circuits(circuits):
 
 
 def solve_part1(data: str, connections: int = 1000) -> str:
-    coords = [tuple([int(pt) for pt in line.strip().split(",")])
-              for line in data.splitlines()]
+    coords = [
+        tuple([int(pt) for pt in line.strip().split(",")]) for line in data.splitlines()
+    ]
     combs = [(dist(*comb), comb) for comb in combinations(coords, 2)]
-    combs = map(lambda comb: comb[1], sorted(
-        combs, key=lambda comb: comb[0])[:connections])
+    combs = map(
+        lambda comb: comb[1], sorted(combs, key=lambda comb: comb[0])[:connections]
+    )
     circuits = []
     for comb in combs:
         for circ in circuits:
@@ -38,8 +40,9 @@ def solve_part1(data: str, connections: int = 1000) -> str:
 
 
 def solve_part2(data: str) -> str:
-    coords = [tuple([int(pt) for pt in line.strip().split(",")])
-              for line in data.splitlines()]
+    coords = [
+        tuple([int(pt) for pt in line.strip().split(",")]) for line in data.splitlines()
+    ]
     target_length = len(coords)
     combs = [(dist(*comb), comb) for comb in combinations(coords, 2)]
     combs = map(lambda comb: comb[1], sorted(combs, key=lambda comb: comb[0]))
