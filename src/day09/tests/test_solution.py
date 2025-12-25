@@ -23,7 +23,19 @@ def test_solve_part1(data: str, expected: str):
     assert solve_part1(data) == expected
 
 
-part2_samples = []
+part2_samples = [
+    (
+        """7,1
+11,1
+11,7
+9,7
+9,5
+2,5
+2,3
+7,3""",
+        "24",
+    ),
+]
 
 
 @mark.parametrize("data,expected", part2_samples)
